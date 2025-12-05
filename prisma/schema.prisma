@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String       @id @default(cuid())
+  email     String       @unique
+  name      String?
+  maps      MapProject[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model MapProject {
+  id          String   @id @default(cuid())
+  name        String
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  routeData   Json     // Storing routes as JSON
+  markerData  Json     // Storing markers as JSON
+  mapSettings Json     // Center, zoom, etc.
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
