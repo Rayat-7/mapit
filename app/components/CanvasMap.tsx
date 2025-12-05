@@ -289,7 +289,7 @@ export default function CanvasMap() {
 
   // Instruction message
   let instruction = '';
-  if (drawingMode === 'route') instruction = currentRoute.length === 0 ? 'Click to start route' : 'Click to add point, DblClick to finish';
+  if (drawingMode === 'route') instruction = currentRoute.length === 0 ? 'Click to start route' : 'Click to add point, Double Click to finish';
   else if (drawingMode === 'marker') instruction = `Click to place ${selectedTool}`;
   else if (drawingMode === 'label') instruction = 'Click map to add text';
 
@@ -307,7 +307,7 @@ export default function CanvasMap() {
       />
       
       {/* Grid Pattern Overlay (Pointer events none so it doesn't block map interaction) */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-20" 
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-20 " 
            style={{ 
                backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', 
                backgroundSize: '20px 20px' 
@@ -465,7 +465,7 @@ export default function CanvasMap() {
       {/* Cursor Tooltip */}
       {instruction && (
         <div 
-            className="absolute z-20 pointer-events-none bg-black/80 text-white text-xs px-2 py-1 rounded whitespace-nowrap"
+            className="absolute z-20 pointer-events-none bg-zinc-900/90 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full whitespace-nowrap border border-green-500/50 shadow-[0_0_10px_rgba(34,197,94,0.2)]"
             style={{ 
                 left: cursorPos.x + 15, 
                 top: cursorPos.y + 15,

@@ -280,7 +280,7 @@ export default function MapCanvas() {
         MapPin; // Default
 
     return (
-        <div className="relative flex items-center justify-center filter drop-shadow-md">
+        <div className="relative flex items-center justify-center filter drop-shadow-md border-2 border-green-500">
             {/* Custom Solid Background Pin */}
             <svg 
                 width="34" 
@@ -466,7 +466,7 @@ export default function MapCanvas() {
       {/* Cursor Tooltip */}
       {instruction && (
         <div 
-            className="absolute z-20 pointer-events-none bg-black/80 text-white text-xs px-2 py-1 rounded whitespace-nowrap"
+            className="absolute z-20 pointer-events-none bg-zinc-900/90 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full whitespace-nowrap border border-green-500/50 shadow-[0_0_10px_rgba(34,197,94,0.2)]"
             style={{ 
                 left: cursorPos.x + 15, 
                 top: cursorPos.y + 15,
