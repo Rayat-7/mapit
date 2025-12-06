@@ -465,7 +465,7 @@ export default function CanvasMap() {
       {/* Cursor Tooltip */}
       {instruction && (
         <div 
-            className="absolute z-20 pointer-events-none bg-zinc-900/90 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full whitespace-nowrap border border-green-500/50 shadow-[0_0_10px_rgba(34,197,94,0.2)]"
+            className="absolute z-20 pointer-events-none bg-zinc-900/90 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full whitespace-nowrap shadow-[0_0_10px_rgba(34,197,94,0.2)]"
             style={{ 
                 left: cursorPos.x + 15, 
                 top: cursorPos.y + 15,

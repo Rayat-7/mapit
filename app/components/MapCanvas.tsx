@@ -280,7 +280,7 @@ export default function MapCanvas() {
         MapPin; // Default
 
     return (
-        <div className="relative flex items-center justify-center filter drop-shadow-md border-2 border-green-500">
+        <div className="relative flex items-center justify-center filter drop-shadow-md ">
             {/* Custom Solid Background Pin */}
             <svg 
                 width="34" 

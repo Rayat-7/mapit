@@ -1,9 +1,11 @@
+"use client";
 import React from 'react'; // Added explicit React import for safety
 import { 
     MapPin, Route, Download, Grid3X3, ArrowRight, 
     Globe2, PenTool, Layers, CheckCircle2, Play, Users, Ruler, Share2
 } from 'lucide-react';
-
+import RotatingText from '@/components/ui/rotating_text';
+import RouteAnimation from '@/components/landing/RouteAnimation';
 
 // Define the editor path explicitly
 const editorPath = "/gateway"; 
@@ -43,7 +45,7 @@ const FeatureCard = ({ icon: Icon, title, description, color, href }: FeatureCar
 
 export default function LandingPage() {
     return (
-        <main className="min-h-screen bg-black text-white font-sans selection:bg-blue-500/30 overflow-hidden relative">
+        <main className="h-screen w-full bg-black text-white font-sans selection:bg-blue-500/30 overflow-hidden relative flex flex-col">
             
             {/* Grid Background */}
             <div className="absolute inset-0 z-0 pointer-events-none" 
@@ -58,61 +60,69 @@ export default function LandingPage() {
             />
 
             {/* Navbar */}
-            <nav className="relative z-10 flex items-center justify-between px-6 py-6 max-w-7xl mx-auto">
+            <nav className="relative z-10 flex items-center justify-between px-6 py-6 w-full max-w-7xl mx-auto flex-shrink-0">
                 <div className="flex items-center gap-8">
                     <div className="flex items-center gap-2 font-bold text-xl tracking-tighter">
-                        {/* Logo/Icon reflecting localization and simplicity */}
                         <div className="w-8 h-8 bg-green-500 text-black flex items-center justify-center rounded-lg shadow-lg">
                             <MapPin size={20} className="transform -rotate-12" />
                         </div>
                         <span className="text-green-400">Shohoj</span><span className="text-white">Routemap</span>
                     </div>
                 </div>
-                <div className="flex items-center gap-4 text-sm font-medium">
-                    {/* Replaced Link with <a> */}
-                    <a 
-                        href={editorPath} 
-                        className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition duration-200 border border-zinc-700 shadow-lg"
-                    >
-                        Demo দেখুন
-                    </a>
-                </div>
             </nav>
 
-            {/* Hero Section */}
-            <div className="relative z-10 max-w-7xl mx-auto px-6 pt-12 md:pt-24 pb-20 flex flex-col lg:flex-row gap-16 lg:gap-24 text-center lg:text-left">
+            {/* Hero Section - Flex Grow to take remaining space */}
+            <div className="relative z-10 flex-1 w-full max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
                 
                 {/* Left Content */}
-                <div className="flex-1 flex flex-col justify-center items-center lg:items-start">
+                <div className="flex-1 flex flex-col justify-center items-center lg:items-start space-y-6">
                     
-                    <span className="inline-block bg-green-500/15 text-green-400 text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-wider border border-green-500/30 shadow-md">
+                    <span className="inline-block bg-green-500/15 text-green-400 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider border border-green-500/30 shadow-md">
                         Zero Setup. Zero Login.
                     </span>
 
-                    <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-snug md:leading-tight mb-6">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
+                    <h1 className="text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-snug md:leading-tight">
+                        <span className="text-transparent mr-2 bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
                             Instant Map
                         </span> 
                         Output.
                     </h1>
 
-                    <p className="text-lg md:text-xl text-zinc-400 max-w-xl mb-10 leading-relaxed">
-                        No sign-ups, no saving required. Use the **Blank Canvas** or **Map View** to quickly design your ideal route, snap a screenshot, and share immediately. The fastest way to map and go.
-                    </p>
+                    <div className="max-w-xl">
+                        <div className="text-lg md:text-xl text-zinc-400 leading-relaxed flex flex-wrap items-center gap-2 mb-4">
+                            <span>No sign-ups, simply</span>
+                            <RotatingText
+                                texts={['Mark', 'Route', 'Take Screenshot', 'Share']}
+                                mainClassName="px-3 bg-green-500/10 text-green-400 border border-green-500/20 overflow-hidden py-0.5 sm:py-1 justify-center rounded-lg shadow-sm"
+                                staggerFrom="last"
+                                initial={{ y: "100%" }}
+                                animate={{ y: 0 }}
+                                exit={{ y: "-120%" }}
+                                staggerDuration={0.025}
+                                splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1"
+                                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                                rotationInterval={2000}
+                            />
+                            <span>and go.</span>
+                        </div>
+                        <p className="text-base md:text-lg text-zinc-400 leading-relaxed">
+                            Use the <span className="text-zinc-200 font-medium">Blank Canvas</span> or <span className="text-zinc-200 font-medium">Map View</span> to quickly design your ideal route, snap a screenshot, and share immediately.
+                        </p>
+                    </div>
 
-                    {/* Main CTA - Replaced Link with <a> */}
+                    {/* Main CTA */}
                     <a 
                         href={editorPath}
                         className="group flex items-center gap-3 bg-green-500 hover:bg-green-600 text-black font-bold text-lg py-3 px-8 rounded-xl transition duration-300 shadow-2xl shadow-green-500/30 transform hover:scale-[1.05]"
                     >
-                        ম্যাপ বানানো শুরু করুন (Launch Editor)
+                        Launch Editor
                         <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                     </a>
 
-                    <div className="mt-8 flex items-center text-sm text-zinc-500 gap-4">
+                    <div className="hidden md:flex items-center text-sm text-zinc-500 gap-4 mt-2">
                         <div className="flex items-center gap-2">
                             <CheckCircle2 size={16} className="text-green-500" />
-                           
+                            <span>Free Forever</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <CheckCircle2 size={16} className="text-green-500" />
@@ -122,41 +132,15 @@ export default function LandingPage() {
 
                 </div>
 
-                {/* Right Visuals (Feature Cards) */}
-                <div className="flex-1 relative mt-10 lg:mt-0">
-                    <div className="flex flex-col gap-4 max-w-lg mx-auto transform translate-y-8">
-                        
-                        <FeatureCard 
-                            icon={Grid3X3}
-                            title="Dual View Modes"
-                            description="Choose between a precise Blank Grid or a simplified, geographic Map background."
-                            color="purple"
-                            href={editorPath}
-                        />
-                        
-                        <FeatureCard 
-                            icon={PenTool}
-                            title="Custom Marker & Text Editing"
-                            description="Use the local landmark palette and custom text labels to build clear, easy-to-read directions."
-                            color="red"
-                            href={editorPath}
-                        />
-
-                        <FeatureCard 
-                            icon={Share2}
-                            title="Screenshot Mode Ready"
-                            description="After editing, switch to the dedicated clean view designed for high-quality image capture and instant sharing."
-                            color="blue"
-                            href={editorPath}
-                        />
-                        
-                    </div>
+                {/* Right Visuals (Animation) */}
+                <div className="flex-1 w-full max-w-md lg:max-w-lg flex items-center justify-center">
+                   <RouteAnimation />
                 </div>
 
             </div>
 
-            {/* Simple Footer/Bottom Links */}
-            <div className="relative z-10 max-w-7xl mx-auto px-6 py-4 border-t border-zinc-800 mt-20 text-center text-xs text-zinc-600">
+            {/* Footer */}
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-4  text-center text-xs text-zinc-500 flex-shrink-0">
                 &copy; 2025 Raisul rayat Omi. Made for ease of use.
             </div>
 
