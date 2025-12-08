@@ -63,7 +63,7 @@ export default function LandingPage() {
             <nav className="relative z-10 flex items-center justify-between px-6 py-6 w-full max-w-7xl mx-auto flex-shrink-0">
                 <div className="flex items-center gap-8">
                     <div className="flex items-center gap-2 font-bold text-xl tracking-tighter">
-                        <div className="w-8 h-8 bg-green-500 text-black flex items-center justify-center rounded-lg shadow-lg">
+                        <div className="w-8 h-8 bg-green-500 text-black flex items-center justify-center  shadow-lg">
                             <MapPin size={20} className="transform -rotate-12" />
                         </div>
                         <span className="text-green-400">Shohoj</span><span className="text-white">Routemap</span>
@@ -77,7 +77,7 @@ export default function LandingPage() {
                 {/* Left Content */}
                 <div className="flex-1 flex flex-col justify-center items-center lg:items-start space-y-6">
                     
-                    <span className="inline-block bg-green-500/15 text-green-400 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider border border-green-500/30 shadow-md">
+                    <span className="inline-block bg-green-500/15 text-green-400 text-xs font-semibold px-3 py-1  uppercase tracking-wider border border-green-500/30 shadow-md">
                         Zero Setup. Zero Login.
                     </span>
 
@@ -93,7 +93,7 @@ export default function LandingPage() {
                             <span>No sign-ups, simply</span>
                             <RotatingText
                                 texts={['Mark', 'Route', 'Take Screenshot', 'Share']}
-                                mainClassName="px-3 bg-green-500/10 text-green-400 border border-green-500/20 overflow-hidden py-0.5 sm:py-1 justify-center rounded-lg shadow-sm"
+                                mainClassName="px-2 bg-green-500/10 text-green-400 border border-green-500/20 overflow-hidden py-0.5 sm:py-1 justify-center  shadow-sm"
                                 staggerFrom="last"
                                 initial={{ y: "100%" }}
                                 animate={{ y: 0 }}
@@ -113,7 +113,7 @@ export default function LandingPage() {
                     {/* Main CTA */}
                     <a 
                         href={editorPath}
-                        className="group flex items-center gap-3 bg-green-500 hover:bg-green-600 text-black font-bold text-lg py-3 px-8 rounded-xl transition duration-300 shadow-2xl shadow-green-500/30 transform hover:scale-[1.05]"
+                        className="group flex items-center gap-3 bg-green-500 hover:bg-green-600 text-black font-bold text-lg py-3 px-8 transition duration-300 shadow-2xl shadow-green-500/30 transform hover:scale-[1.05]"
                     >
                         Launch Editor
                         <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
